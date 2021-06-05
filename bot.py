@@ -6,7 +6,7 @@ import os
 
 bot = Bot("1833090950:AAEUdZDfXcN1K39guH7jMiI8z4hVR3IJhBI")
 reddit = praw.Reddit(client_id="ZzYynlO2tygKWg", client_secret="BT6frmh3NWZbGzm-YI33CU9xZcKiWA", user_agent="telegrambot")
-updater=Updater("1833090950:AAEUdZDfXcN1K39guH7jMiI8z4hVR3IJhBI"),use_context=True)
+updater=Updater("1833090950:AAEUdZDfXcN1K39guH7jMiI8z4hVR3IJhBI",use_context=True)
 
 dispatcher=updater.dispatcher
 
