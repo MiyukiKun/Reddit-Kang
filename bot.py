@@ -32,6 +32,7 @@ def test_function (update:Update,context:CallbackContext):
                     print(e)
                     print(i.url)
                     bot.send_message(chat_id= "@R_Ecchi", text= f"{i.title}\n{i.url}", reply_markup = InlineKeyboardMarkup(keyboard))
+                    last = i.url
 
         a = a + 1
         print(a)
