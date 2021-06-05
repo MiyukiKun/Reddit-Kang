@@ -25,13 +25,13 @@ def test_function (update:Update,context:CallbackContext):
                     ]]
                 
                 try:
-                    bot.sendPhoto(chat_id= 1292443145, caption= i.title, photo=i.url, reply_markup = InlineKeyboardMarkup(keyboard))
+                    bot.sendPhoto(chat_id= "@R_Ecchi, caption= i.title, photo=i.url, reply_markup = InlineKeyboardMarkup(keyboard))
                     last = i.url
                     
                 except Exception as e:
                     print(e)
                     print(i.url)
-                    bot.send_message(chat_id= 1292443145, text= f"{i.title}\n{i.url}", reply_markup = InlineKeyboardMarkup(keyboard))
+                    bot.send_message(chat_id= "@R_Ecchi", text= f"{i.title}\n{i.url}", reply_markup = InlineKeyboardMarkup(keyboard))
 
         a = a + 1
         print(a)
