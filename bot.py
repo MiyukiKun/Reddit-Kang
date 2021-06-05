@@ -25,7 +25,7 @@ def test_function (update:Update,context:CallbackContext):
                     ]]
                 
                 try:
-                    bot.sendPhoto(chat_id= "@R_Ecchi, caption= i.title, photo=i.url, reply_markup = InlineKeyboardMarkup(keyboard))
+                    bot.sendPhoto(chat_id= "@R_Ecchi", caption= i.title, photo=i.url, reply_markup = InlineKeyboardMarkup(keyboard))
                     last = i.url
                     
                 except Exception as e:
