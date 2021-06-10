@@ -21,8 +21,8 @@ async def kang_reddit():
                     buttons=[Button.inline("🍆 0", data="e1:0:0:0"), Button.inline("❤️ 0", data="e2:0:0:0"), Button.inline("👎🏻 0", data="e3:0:0:0")]  
                 )
                     last = i.url
-                except:
-                    print("shmit")
+                except Exception as e:
+                    print(e)
         await asyncio.sleep(60)    
         print("nothing")
 
