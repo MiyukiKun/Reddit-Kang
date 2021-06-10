@@ -1,4 +1,4 @@
-from config import bot, reddit_personal_use_script, reddit_secret, agent
+from config import bot, reddit_personal_use_script, reddit_secret, agent, subreddit, channel_id
 from telethon import events, Button
 import asyncio
 import asyncpraw
@@ -12,12 +12,13 @@ loop = asyncio.get_event_loop()
 async def kang_reddit():
     last = ''
     while True:
-        subred = await reddit.subreddit("ecchi")
+        subred = await reddit.subreddit(subreddit)
         new = subred.new(limit = 1)
         async for i in new:
             if i.url != last:
                 try:
-                    await bot.send_message(732913305, 
+                    await bot.send_message(
+                    channel_id, 
                     i.title, 
                     file=i.url,
                     buttons=[Button.inline("🍆 0", data="e1:0:0:0"), Button.inline("❤️ 0", data="e2:0:0:0"), Button.inline("👎🏻 0", data="e3:0:0:0")]  
