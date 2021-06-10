@@ -15,7 +15,7 @@ async def kang_reddit():
             if i.url != last:
                 try:
                     await bot.send_message(
-                    channel_id, 
+                    int(channel_id), 
                     i.title, 
                     file=i.url,
                     buttons=[Button.inline("🍆 0", data="e1:0:0:0"), Button.inline("❤️ 0", data="e2:0:0:0"), Button.inline("👎🏻 0", data="e3:0:0:0")]  
