@@ -1,10 +1,12 @@
-from config import bot
+from config import bot, reddit_personal_use_script, reddit_secret, agent
 from telethon import events, Button
 import asyncio
 import asyncpraw
 
+reddit_personal_use_script = os.environ.get('REDDIT_PERSONAL_USE_SCRIPT')
+reddit_secret = os.environ.get('REDDIT_SECRET')
 
-reddit = asyncpraw.Reddit(client_id="ZzYynlO2tygKWg", client_secret="BT6frmh3NWZbGzm-YI33CU9xZcKiWA", user_agent="telegrambot")
+reddit = asyncpraw.Reddit(client_id = reddit_personal_use_script, client_secret = reddit_secret, user_agent = agent)
 
 loop = asyncio.get_event_loop()
 async def kang_reddit():
