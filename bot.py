@@ -7,7 +7,7 @@ reddit = asyncpraw.Reddit(client_id = reddit_personal_use_script, client_secret 
 
 loop = asyncio.get_event_loop()
 async def kang_reddit():
-    channel = await bot.get_entitiy("t.me/{channel_id}")
+    channel = await bot.get_entity(f"t.me/{channel_id}")
     last = ''
     while True:
         subred = await reddit.subreddit(subreddit)
