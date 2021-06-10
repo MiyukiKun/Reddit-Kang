@@ -1,43 +1,70 @@
-from telegram import *
-from telegram.ext import *
-import praw
-import time
-import os
+from config import bot
+from telethon import events, Button
+import asyncio
+import asyncpraw
 
-bot = Bot("1833090950:AAEUdZDfXcN1K39guH7jMiI8z4hVR3IJhBI")
-reddit = praw.Reddit(client_id="ZzYynlO2tygKWg", client_secret="BT6frmh3NWZbGzm-YI33CU9xZcKiWA", user_agent="telegrambot")
-updater=Updater("1833090950:AAEUdZDfXcN1K39guH7jMiI8z4hVR3IJhBI",use_context=True)
 
-dispatcher=updater.dispatcher
+reddit = asyncpraw.Reddit(client_id="ZzYynlO2tygKWg", client_secret="BT6frmh3NWZbGzm-YI33CU9xZcKiWA", user_agent="telegrambot")
 
-def test_function (update:Update,context:CallbackContext):
+loop = asyncio.get_event_loop()
+async def kang_reddit():
     last = ''
-    a = 1
-    while a < 50000:
-        subred = reddit.subreddit("ecchi")
+    while True:
+        subred = await reddit.subreddit("ecchi")
         new = subred.new(limit = 1)
-        for i in new:
+        async for i in new:
             if i.url != last:
-                keyboard = [[
-                    InlineKeyboardButton("🍆", callback_data='1'),
-                    InlineKeyboardButton("❤️", callback_data='2'),
-                    InlineKeyboardButton("👎🏻", callback_data='2')
-                    ]]
-                
                 try:
-                    bot.sendPhoto(chat_id= "@R_Ecchi", caption= i.title, photo=i.url, reply_markup = InlineKeyboardMarkup(keyboard))
+                    await bot.send_message(732913305, 
+                    i.title, 
+                    file=i.url,
+                    buttons=[Button.inline("🍆 0", data="e1:0:0:0"), Button.inline("❤️ 0", data="e2:0:0:0"), Button.inline("👎🏻 0", data="e3:0:0:0")]  
+                )
                     last = i.url
-                    
-                except Exception as e:
-                    print(e)
-                    print(i.url)
-                    bot.send_message(chat_id= "@R_Ecchi", text= f"{i.title}\n{i.url}", reply_markup = InlineKeyboardMarkup(keyboard))
-                    last = i.url
+                except:
+                    print("shmit")
+        await asyncio.sleep(60)    
+        print("nothing")
 
-        a = a + 1
-        print(a)
-        time.sleep(30)
-            
-test_function(Update, CallbackContext)
+@bot.on(events.NewMessage(pattern="/start"))
+async def start(event):
+    await bot.send_message(event.chat_id, "Bot is Running")
 
-updater.start_polling()
+@bot.on(events.CallbackQuery(pattern=b"e1"))
+async def emoji1(event):
+    data = event.data.decode('utf-8')
+    data_split = data.split(':')
+    new_count = int(data_split[1]) +1
+    await event.edit(buttons=[
+        Button.inline(f"🍆 {new_count}", data=f"e1:{new_count}:{data_split[2]}:{data_split[3]}"), 
+        Button.inline(f"❤️ {data_split[2]}", data=f"e2:{new_count}:{data_split[2]}:{data_split[3]}"), 
+        Button.inline(f"👎🏻 {data_split[3]}", data=f"e3:{new_count}:{data_split[2]}:{data_split[3]}")
+    ])
+
+@bot.on(events.CallbackQuery(pattern=b"e2"))
+async def emoji2(event):
+    data = event.data.decode('utf-8')
+    data_split = data.split(':')
+    new_count = int(data_split[2]) + 1
+    await event.edit(buttons=[
+        Button.inline(f"🍆 {data_split[1]}", data=f"e1:{data_split[1]}:{new_count}:{data_split[3]}"), 
+        Button.inline(f"❤️ {new_count}", data=f"e2:{data_split[1]}:{new_count}:{data_split[3]}"), 
+        Button.inline(f"👎🏻 {data_split[3]}", data=f"e3:{data_split[1]}:{new_count}:{data_split[3]}")
+    ])
+
+@bot.on(events.CallbackQuery(pattern=b"e3"))
+async def emoji3(event):
+    data = event.data.decode('utf-8')
+    data_split = data.split(':')
+    new_count = int(data_split[3]) + 1
+    await event.edit(buttons=[
+        Button.inline(f"🍆 {data_split[1]}", data=f"e1:{data_split[1]}:{data_split[2]}:{new_count}"), 
+        Button.inline(f"❤️ {data_split[2]}", data=f"e2:{data_split[1]}:{data_split[2]}:{new_count}"), 
+        Button.inline(f"👎🏻 {new_count}", data=f"e3:{data_split[1]}:{data_split[2]}:{new_count}")
+    ])
+
+loop.run_until_complete(kang_reddit())
+
+bot.start()
+
+bot.run_until_disconnected()
