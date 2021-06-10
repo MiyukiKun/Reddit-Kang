@@ -7,6 +7,7 @@ reddit = asyncpraw.Reddit(client_id = reddit_personal_use_script, client_secret 
 
 loop = asyncio.get_event_loop()
 async def kang_reddit():
+    channel = await bot.get_entitiy("t.me/{channel_id}")
     last = ''
     while True:
         subred = await reddit.subreddit(subreddit)
@@ -15,7 +16,7 @@ async def kang_reddit():
             if i.url != last:
                 try:
                     await bot.send_message(
-                    int(channel_id), 
+                    channel, 
                     i.title, 
                     file=i.url,
                     buttons=[Button.inline("🍆 0", data="e1:0:0:0"), Button.inline("❤️ 0", data="e2:0:0:0"), Button.inline("👎🏻 0", data="e3:0:0:0")]  
