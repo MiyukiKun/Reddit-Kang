@@ -6,7 +6,7 @@
     "keywords": ["telegrambot", "redditbot"],
     "success_url" : "t.me/r_ecchi",
     "env": {
-        "APP_ID": {
+        "API_ID": {
           "description": "Get this value from https://my.telegram.org",
           "value": ""
         },
