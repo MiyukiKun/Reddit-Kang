@@ -17,11 +17,12 @@ async def kang_reddit():
                 try:
                     await bot.send_message(
                     channel, 
-                    i.title, 
+                    f"{i.title}\n@{channel_id}", 
                     file=i.url,
                 )
                     await bot.send_message(
-                    channel, 
+                    channel,
+                    f"{i.title}\n@{channel_id}",
                     file=i.url,
                     force_document=True,
                     buttons=[Button.inline("🍆 0", data="e1:0:0:0"), Button.inline("❤️ 0", data="e2:0:0:0"), Button.inline("👎🏻 0", data="e3:0:0:0")]  
