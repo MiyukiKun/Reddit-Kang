@@ -25,7 +25,7 @@ async def kang_reddit():
                     f"{i.title}\n@{channel_id}",
                     file=i.url,
                     force_document=True,
-                    buttons=[Button.inline("👍🏻 0", data="e1:0:0:0"), Button.inline("❤️ 0", data="e2:0:0:0"), Button.inline("👎🏻 0", data="e3:0:0:0")]  
+                    buttons=[Button.inline("❤️ 0", data="e1:0:0:0"), Button.inline("👍🏻 0", data="e2:0:0:0"), Button.inline("👎🏻 0", data="e3:0:0:0")]  
                 )
                     last = i.url
                 except Exception as e:
@@ -43,8 +43,8 @@ async def emoji1(event):
     data_split = data.split(':')
     new_count = int(data_split[1]) +1
     await event.edit(buttons=[
-        Button.inline(f"👍🏻 {new_count}", data=f"e1:{new_count}:{data_split[2]}:{data_split[3]}"), 
-        Button.inline(f"❤️ {data_split[2]}", data=f"e2:{new_count}:{data_split[2]}:{data_split[3]}"), 
+        Button.inline(f"❤️ {new_count}", data=f"e1:{new_count}:{data_split[2]}:{data_split[3]}"), 
+        Button.inline(f"👍🏻 {data_split[2]}", data=f"e2:{new_count}:{data_split[2]}:{data_split[3]}"), 
         Button.inline(f"👎🏻 {data_split[3]}", data=f"e3:{new_count}:{data_split[2]}:{data_split[3]}")
     ])
 
@@ -54,8 +54,8 @@ async def emoji2(event):
     data_split = data.split(':')
     new_count = int(data_split[2]) + 1
     await event.edit(buttons=[
-        Button.inline(f"👍🏻 {data_split[1]}", data=f"e1:{data_split[1]}:{new_count}:{data_split[3]}"), 
-        Button.inline(f"❤️ {new_count}", data=f"e2:{data_split[1]}:{new_count}:{data_split[3]}"), 
+        Button.inline(f"❤️ {data_split[1]}", data=f"e1:{data_split[1]}:{new_count}:{data_split[3]}"), 
+        Button.inline(f"👍🏻 {new_count}", data=f"e2:{data_split[1]}:{new_count}:{data_split[3]}"), 
         Button.inline(f"👎🏻 {data_split[3]}", data=f"e3:{data_split[1]}:{new_count}:{data_split[3]}")
     ])
 
@@ -65,8 +65,8 @@ async def emoji3(event):
     data_split = data.split(':')
     new_count = int(data_split[3]) + 1
     await event.edit(buttons=[
-        Button.inline(f"👍🏻 {data_split[1]}", data=f"e1:{data_split[1]}:{data_split[2]}:{new_count}"), 
-        Button.inline(f"❤️ {data_split[2]}", data=f"e2:{data_split[1]}:{data_split[2]}:{new_count}"), 
+        Button.inline(f"❤️ {data_split[1]}", data=f"e1:{data_split[1]}:{data_split[2]}:{new_count}"), 
+        Button.inline(f"👍🏻 {data_split[2]}", data=f"e2:{data_split[1]}:{data_split[2]}:{new_count}"), 
         Button.inline(f"👎🏻 {new_count}", data=f"e3:{data_split[1]}:{data_split[2]}:{new_count}")
     ])
 
