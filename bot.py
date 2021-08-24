@@ -21,6 +21,12 @@ async def kang_reddit():
                     file=i.url,
                     buttons=[Button.inline("🍆 0", data="e1:0:0:0"), Button.inline("❤️ 0", data="e2:0:0:0"), Button.inline("👎🏻 0", data="e3:0:0:0")]  
                 )
+                    await bot.send_message(
+                    channel, 
+                    file=i.url,
+                    force_document=True,
+                    buttons=[Button.inline("🍆 0", data="e1:0:0:0"), Button.inline("❤️ 0", data="e2:0:0:0"), Button.inline("👎🏻 0", data="e3:0:0:0")]  
+                )
                     last = i.url
                 except Exception as e:
                     print(e)
