@@ -38,7 +38,7 @@ async def kang_reddit():
                         file=filename,
                     )
                     await bot.send_message(
-                        -1001361915166,
+                        channel_id,
                         i.title,
                         file=filename,
                         force_document=True,
@@ -67,7 +67,7 @@ async def kang_reddit():
                         file=filename,
                     )
                     await bot.send_message(
-                        -1001361915166,
+                        channel_id,
                         i.title,
                         file=filename,
                         force_document=True,
@@ -96,7 +96,7 @@ async def kang_reddit():
                         file=filename,
                     )
                     await bot.send_message(
-                        -1001361915166,
+                        channel_id,
                         i.title,
                         file=filename,
                         force_document=True,
