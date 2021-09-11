@@ -34,12 +34,12 @@ async def kang_reddit():
                     print("here")
                     await bot.send_message(
                         channel_id,
-                        i.title,
+                        f"{i.title}\n@{channel_id}",
                         file=filename,
                     )
                     await bot.send_message(
                         channel_id,
-                        i.title,
+                        f"{i.title}\n@{channel_id}",
                         file=filename,
                         force_document=True,
                         buttons=[Button.inline("❤️ 0", data="e1:0:0:0"), Button.inline(
@@ -63,12 +63,12 @@ async def kang_reddit():
                     print("here")
                     await bot.send_message(
                         channel_id,
-                        i.title,
+                        f"{i.title}\n@{channel_id}",
                         file=filename,
                     )
                     await bot.send_message(
                         channel_id,
-                        i.title,
+                        f"{i.title}\n@{channel_id}",,
                         file=filename,
                         force_document=True,
                         buttons=[Button.inline("❤️ 0", data="e1:0:0:0"), Button.inline(
@@ -92,12 +92,12 @@ async def kang_reddit():
                     print("here")
                     await bot.send_message(
                         channel_id,
-                        i.title,
+                        f"{i.title}\n@{channel_id}",
                         file=filename,
                     )
                     await bot.send_message(
                         channel_id,
-                        i.title,
+                        f"{i.title}\n@{channel_id}",
                         file=filename,
                         force_document=True,
                         buttons=[Button.inline("❤️ 0", data="e1:0:0:0"), Button.inline(
