@@ -3,6 +3,7 @@ from telethon import events, Button
 import asyncio
 import asyncpraw
 import requests
+import os
 
 reddit = asyncpraw.Reddit(client_id = reddit_personal_use_script, client_secret = reddit_secret, user_agent = agent)
 
@@ -68,7 +69,7 @@ async def kang_reddit():
                     )
                     await bot.send_message(
                         channel_id,
-                        f"{i.title}\n@{channel_id}",,
+                        f"{i.title}\n@{channel_id}",
                         file=filename,
                         force_document=True,
                         buttons=[Button.inline("❤️ 0", data="e1:0:0:0"), Button.inline(
