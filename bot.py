@@ -2,6 +2,7 @@ from config import bot, reddit_personal_use_script, reddit_secret, agent, subred
 from telethon import events, Button
 import asyncio
 import asyncpraw
+import requests
 
 reddit = asyncpraw.Reddit(client_id = reddit_personal_use_script, client_secret = reddit_secret, user_agent = agent)
 
