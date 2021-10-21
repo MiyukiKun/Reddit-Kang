@@ -15,9 +15,9 @@ async def kang_reddit():
     last3 = ''
 
     while True:
-        subred1 = await reddit.subreddit("AnimeWallpapersSFW")
-        subred2 = await reddit.subreddit("AnimeWallpaper")
-        subred3 = await reddit.subreddit("Genshinwallpapers")
+        subred1 = await reddit.subreddit(subreddit2)
+        subred2 = await reddit.subreddit(subreddit1)
+        subred3 = await reddit.subreddit(subreddit3)
 
         new1 = subred1.new(limit=1)
         new2 = subred2.new(limit=1)
